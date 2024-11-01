@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment | Shipra Ladies Beauty Parlor</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .appointment-form-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .success-message {
+            display: none;
+            color: #4cae4c;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="appointment-form-container">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="service">Select Service:</label>
+        <select id="service" name="service" required>
+            <option value="">Choose a Service</option>
+            <option value="Haircut">Haircut</option>
+            <option value="Facial">Facial</option>
+            <option value="Manicure">Manicure</option>
+            <option value="Pedicure">Pedicure</option>
+            <option value="Makeup">Makeup</option>
+        </select>
+
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Preferred Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label>
+            <input type="checkbox" id="whatsappNotification" name="whatsappNotification">
+            Receive appointment details via WhatsApp
+        </label>
+
+        <button type="submit">Book Appointment</button>
+        <p class="success-message" id="successMessage">Thank you! Your appointment has been booked.</p>
+    </form>
+</div>
+
+<script>
+    // JavaScript for form handling
+    document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Validate the form fields (Basic Validation)
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const service = document.getElementById("service").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const whatsappNotification = document.getElementById("whatsappNotification").checked;
+
+        if (name && email && phone && service && date && time) {
+            // Display success message
+            document.getElementById("successMessage").style.display = "block";
+
+            // If the user opts for WhatsApp notifications
+            if (whatsappNotification) {
+                const message = `Appointment Details:\nName: ${name}\nService: ${service}\nDate: ${date}\nTime: ${time}`;
+                const whatsappNumber = "9123994626"; // Ensure the number is in the correct format
+                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappLink, '_blank'); // Open the WhatsApp link
+            }
+
+            // Reset form after submission
+            document.getElementById("appointmentForm").reset();
+        } else {
+            alert("Please fill in all fields.");
+        }
+    });
+</script>
+
+<button type="button" onclick="window.location.href='index.html'" style="margin-top: 10px;">Back to Home</button>
+
+</body>
+</html>

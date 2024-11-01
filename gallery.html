@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Shipra Ladies Beauty Parlor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+        .mySlides img {
+            width: 100%; /* Responsive image */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .active {
+            background-color: #717171;
+        }
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-container iframe {
+            width: 80%; /* Adjust the width of the videos */
+            height: 315px; /* Maintain aspect ratio for YouTube videos */
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="header-overlay">
+            <h1 class="animated-heading">Gallery</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="about.html" class="nav-button">About</a>
+        <a href="services.html" class="nav-button">Services</a>
+        <a href="Pricing.html"class="nav-button">Pricing</a>
+        <a href="gallery.html" class="nav-button">Gallery</a>
+        <a href="Book & Appointment.html" class="nav-button">Book an Appointment</a>
+        <a href="blog.html"class="nav-button">Blog</a>
+        <a href="contact.html" class="nav-button">Contact</a>
+    </nav>
+
+    <section id="gallery">
+        <h2>Our Work</h2>
+        
+        <!-- Image Slideshow Section -->
+        <div class="slideshow-container">
+            <div class="mySlides"><img src="Images/image1.jpg" alt="Gallery Image 1"></div>
+            <div class="mySlides"><img src="Images/image2.jpg" alt="Gallery Image 2"></div>
+            <div class="mySlides"><img src="Images/image3.jpg" alt="Gallery Image 3"></div>
+        </div>
+        
+        <div class="dot-container">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    
+        <!-- Video Section -->
+        <h2>Our Videos</h2>
+        <div class="video-container">
+            <iframe src="Video/Sp Parlor.mp4" frameborder="0" allowfullscreen></iframe>
+            
+        </div>
+    </section>
+    
+    <footer>
+        &copy; 2024 Shipra Ladies Beauty Parlor. All rights reserved.
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Slideshow script
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+</html>
